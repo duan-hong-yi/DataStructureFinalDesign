@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DataStructureFinalDesign.iml" filepath="$PROJECT_DIR$/.idea/DataStructureFinalDesign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FileMangement/FileMangement.iml" filepath="$PROJECT_DIR$/FileMangement/FileMangement.iml" />
+    </modules>
+  </component>
+</project>
