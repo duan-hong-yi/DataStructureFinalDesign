@@ -1,9 +1,10 @@
+import Components.MainTest;
 import Components.MainUI;
 
 public class Test {
     public static void main(String[]str)
     {
-        MainUI mainUI = new MainUI();
-        mainUI.showMainUI();
+        MainTest mainTest = new MainTest();
+        mainTest.build();
     }
 }

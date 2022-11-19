@@ -9,11 +9,6 @@ import Components.mPanel.*;
 import Components.mToolBar.*;
 
 public class mFrame extends JFrame implements ActionListener {
-
-    mPanel mainPanel;
-    mMenuBar mainMenuBar;
-    mToolBar mainToolBar;
-
     public mFrame()
     {
 
