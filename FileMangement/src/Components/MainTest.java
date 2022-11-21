@@ -45,7 +45,7 @@ public class MainTest {
         JTextField  searchField = new JTextField("请输入文件名");//搜索文本框
         searchBarPanel.add(new JTextField("请输入文件名"),BorderLayout.WEST);
         mFrameContentPane.add(searchBarPanel,BorderLayout.NORTH);
-        searchBarPanel.add(new JButton("查询"),BorderLayout.EAST);
+        searchBarPanel.add(new JButton("查询"),BorderLayout.EAST);//查询框
 
 
 
