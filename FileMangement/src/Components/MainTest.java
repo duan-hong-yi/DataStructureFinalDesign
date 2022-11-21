@@ -15,63 +15,71 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class MainTest {
-    mFrame mainFrame;
-    mToolBar mainToolBar;
-    mMenuBar mainMenuBar;
-    mPanel mainPanel;
+    mFrame mainFrame;//主Frame窗格
+    mToolBar mainToolBar;//主工具栏，在菜单栏下方
+    mMenuBar mainMenuBar;//主菜单栏，在主Frame窗格的顶端
+    mPanel mFrameContentPane;//主内容窗格,是Frame里的内容窗格
+    JScrollPane jScrollPane;//滚动窗格，被装在主内容窗格mFrameContentPane里面
+    mPanel mainPanel;//主Panel,嵌套在主内容窗格内，用于装载
+    JList mainList;//主文件列表
+
     public void build()
     {
+        /*
+        * 初始化基础组件
+        * */
         mainFrame = new mFrame();
         mainToolBar = new mToolBar();
         mainMenuBar = new mMenuBar();
         mainPanel = new mPanel();
-        mPanel mPanel = new mPanel();
-        JScrollPane jScrollPane = new JScrollPane(mainPanel);//TODO:当前考虑直接将该组件集成到mFrame中
-        mPanel.add(jScrollPane,BorderLayout.EAST);
-        mPanel.add(new JList<>(),BorderLayout.WEST);
-        mPanel mPanel1 = new mPanel();
-        mPanel1.add(new JTextField("请输入文件名"),BorderLayout.WEST);
-        mPanel.add(mPanel1,BorderLayout.NORTH);
-        mPanel1.add(new JButton("查询"),BorderLayout.EAST);
+        mFrameContentPane = new mPanel();
+        jScrollPane = new JScrollPane(mainPanel);
+        mainFrame.setContentPane(mFrameContentPane);//修改内容窗格
 
-        mainFrame.setContentPane(mPanel);
+
+        mFrameContentPane.add(jScrollPane,BorderLayout.EAST);
+        mFrameContentPane.add(new JList<>(),BorderLayout.WEST);
+
+
+        mPanel searchBarPanel = new mPanel();//搜索栏
+        JTextField  searchField = new JTextField("请输入文件名");//搜索文本框
+        searchBarPanel.add(new JTextField("请输入文件名"),BorderLayout.WEST);
+        mFrameContentPane.add(searchBarPanel,BorderLayout.NORTH);
+        searchBarPanel.add(new JButton("查询"),BorderLayout.EAST);
+
+
+
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
 
         mainPanel.add(mainToolBar, BorderLayout.PAGE_START);
 
 
         mainToolBar.add(new mButton("123"));
 
+        /*
+        * 窗口顶端菜单栏
+        *
+        * */
         mainMenuBar.add(new JMenuItem("test"));
 
         mainFrame.setJMenuBar(mainMenuBar);
         mainFrame.setSize(500,500);
         mainFrame.setVisible(true);
 
-        JList<String> list = new JList<>();
-//        File file = new File("D:\\");//TODO:此处可能考虑做成一个新的方法，在点击的时候进行切换文件夹的操作
-//        File [] files = file.listFiles();
-        ArrayList<String> listData = readFileList("D:\\");
 
 
-//        for(Iterator<File> iterator = Arrays.stream(files).iterator();iterator.hasNext();)
-//        {
-//            File f = iterator.next();
-//            listData.add(f.getName());
-//        }
-        list.setListData(listData.toArray(new String[0]));
 
-
-        //mainPanel.add(list);
-        File file = new File("D:\\");
+        File file = new File("D:\\");//TODO:此处应该是一个
         File[]files = file.listFiles();
-        mListItem listItem = new mListItem(new ArrayList<>(Arrays.asList(files)));//转换成ArrayList
-        JList list1 = new JList<>(listItem);
-        list1.setCellRenderer(new listItemRenderer());
+
+        mListItem listItem = new mListItem(new ArrayList<>(Arrays.asList(files)));//转换成ArrayList,作为构造函数的参数
+        mainList = new JList<>(listItem);
+        mainList.setCellRenderer(new listItemRenderer());
 
 
 
-        mainPanel.add(list1);
+        mainPanel.add(mainList);
 
 
 
