@@ -1,13 +1,14 @@
 package Components.ListItem;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 /*
-* 列表对象
+* 列表元素对象
 * */
 public class mListItem extends AbstractListModel {
-    ArrayList<String> list;
-    public mListItem(ArrayList<String>arrayList)
+    ArrayList<File> list;
+    public mListItem(ArrayList<File>arrayList)
     {
         list=arrayList;
     }
