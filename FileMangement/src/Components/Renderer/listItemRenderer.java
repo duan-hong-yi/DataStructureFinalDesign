@@ -17,7 +17,6 @@ import java.util.Iterator;
 * 列表对象
 * */
 public class listItemRenderer extends DefaultListCellRenderer {//继承了默认列表渲染器
-    File[] files;
     @Override
     /*
     * list – The JList we're painting.
@@ -56,12 +55,7 @@ public class listItemRenderer extends DefaultListCellRenderer {//继承了默认
 
         return this;
     }
-    public listItemRenderer()
-    {}
-    public listItemRenderer(File[] files)
-    {
-        this.files = files;
-    }
+
     public ArrayList<String> readFileList(String fileRootPath)
     {
         ArrayList<String>listData = new ArrayList<>();
